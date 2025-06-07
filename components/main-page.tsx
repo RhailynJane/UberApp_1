@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   carIcon: {
-    width: 20,
-    height: 20,
+    width: 50,
+    height: 50,
     marginRight: 8,
   },
 });
