@@ -18,7 +18,7 @@ const recentLocations = [
   {
     id: 2,
     name: "St Bonaventure Parish",
-    address: "1600 Acadia Dr SE, Calgary, Alberta T2J 3B3",
+    address: "1600 Acadia Dr SE, Calgary, AB T2J 3B3",
   },
 ];
 
@@ -140,24 +140,38 @@ const moreWays = [
     subtitle: "For the things you need done now",
     icon: require("../assets/images/package-icon.png"),
     backgroundColor: "#4488ff",
+    iconStyle: {
+      width: 220,
+      height: 200,
+    },
+    fullWidth: true,
+    textOutside: true,
   },
   {
-    id: 2,
     title: "Go in luxury →",
     subtitle: "Elevated service, high-end",
-    icon: require("../assets/images/luxury-car.png"),
     backgroundColor: "#ff4488",
-  },
+    icon: require("../assets/images/luxury-car.png"),
+
+    iconStyle: {
+      width: 200,
+      height: 200
+    }
+  }
+
 ];
 
 // Bottom Navigation Array
 const bottomNavItems = [
+
+
   {
     id: 1,
     icon: require("../assets/images/home-icon.png"),
     text: "Home",
   },
   {
+
     id: 2,
     icon: require("../assets/images/services-icon.png"),
     text: "Services",
@@ -165,7 +179,7 @@ const bottomNavItems = [
   {
     id: 3,
     icon: require("../assets/images/activity-icon.png"),
-    text: "Activity",
+    text: "Order",
   },
   {
     id: 4,
@@ -365,7 +379,7 @@ const MainPage = () => {
           <View style={styles.moreWaysGrid}>
             {moreWays.map((way) => (
               <View
-                key={way.id}
+                key={way.id || way.title}
                 style={[
                   styles.moreWayCard,
                   { backgroundColor: way.backgroundColor },
@@ -373,7 +387,8 @@ const MainPage = () => {
               >
                 <Image
                   source={way.icon}
-                  style={styles.moreWayIcon}
+                  // --- THIS IS THE CORRECTED LINE ---
+                  style={[styles.moreWayIcon, way.iconStyle]}
                   resizeMode="contain"
                 />
                 <Text style={styles.moreWayTitle}>{way.title}</Text>
