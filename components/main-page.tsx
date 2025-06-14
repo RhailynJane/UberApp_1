@@ -243,7 +243,7 @@ const MainPage = () => {
                   <Image
                     source={restaurant.logo}
                     style={styles.restaurantLogo}
-                    resizeMode="contain"
+                    resizeMode="cover"
                   />
                 </View>
                 <View style={styles.restaurantInfo}>
@@ -533,18 +533,22 @@ const styles = StyleSheet.create({
     width: 280,
   },
   restaurantImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    overflow: "hidden",
+    marginRight: 15,
     backgroundColor: "#555",
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 15,
   },
+
   restaurantLogo: {
-    width: 40,
-    height: 40,
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover",
   },
+
   restaurantInfo: {
     flex: 1,
   },
