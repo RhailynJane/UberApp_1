@@ -140,17 +140,15 @@ const moreWays = [
     subtitle: "For the things you need done now",
     icon: require("../assets/images/package-icon.png"),
     backgroundColor: "#4488ff",
-
   },
   {
+    id: 2,
     title: "Go in luxury →",
     subtitle: "Elevated service, high-end",
     backgroundColor: "#ff4488",
     icon: require("../assets/images/luxury-car.png"),
-
-
-  }
-
+    backgroundColor: "#ff4488",
+  },
 ];
 
 // Bottom Navigation Array
@@ -367,28 +365,26 @@ const MainPage = () => {
         {/* More ways to use Uber */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>More ways to use Uber</Text>
-          <ScrollView horizontal
-            showsHorizontalScrollIndicator={false}
-            style={styles.horizontalScroll}><View style={styles.moreWaysGrid}>
-              {moreWays.map((way) => (
-                <View
-                  key={way.id || way.title}
-                  style={[
-                    styles.moreWayCard,
-                  ]}
-                >
-                  <Image
-                    source={way.icon}
-                    // --- THIS IS THE CORRECTED LINE ---
-                    style={[styles.moreWayIcon, way]}
-                    resizeMode="cover"
-                  />
-                  <Text style={styles.moreWayTitle}>{way.title}</Text>
-                  <Text style={styles.moreWaySubtitle}>{way.subtitle}</Text>
-                </View>
-              ))}
-            </View></ScrollView>
 
+          <View style={styles.moreWaysGrid}>
+            {moreWays.map((way) => (
+              <View
+                key={way.id}
+                style={[
+                  styles.moreWayCard,
+                  { backgroundColor: way.backgroundColor },
+                ]}
+              >
+                <Image
+                  source={way.icon}
+                  style={styles.moreWayIcon}
+                  resizeMode="contain"
+                />
+                <Text style={styles.moreWayTitle}>{way.title}</Text>
+                <Text style={styles.moreWaySubtitle}>{way.subtitle}</Text>
+              </View>
+            ))}
+          </View>
         </View>
 
         {/* Score a GPC */}
