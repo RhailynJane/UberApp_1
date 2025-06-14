@@ -287,25 +287,21 @@ const MainPage = () => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Plan your next trip</Text>
 
-          <ScrollView horizontal
+          <ScrollView
+            horizontal
             showsHorizontalScrollIndicator={false}
-            style={styles.horizontalScroll}>
-          <View style={styles.tripCards}>
-            {tripCards.map((card) => (
-              <View
-                key={card.id}
-                style={styles.tripCard}
-              >
-                <Image
-                  source={card.icon}
-                  style={styles.tripIcon} 
-                /> 
-                <Text style={styles.tripTitle}>{card.title}</Text>
-                <Text style={styles.tripSubtitle}>{card.subtitle}</Text>
-              </View>
-            ))}
-          </View>
-        </ScrollView>
+            style={styles.horizontalScroll}
+          >
+            <View style={styles.tripCards}>
+              {tripCards.map((card) => (
+                <View key={card.id} style={styles.tripCard}>
+                  <Image source={card.icon} style={styles.tripIcon} />
+                  <Text style={styles.tripTitle}>{card.title}</Text>
+                  <Text style={styles.tripSubtitle}>{card.subtitle}</Text>
+                </View>
+              ))}
+            </View>
+          </ScrollView>
         </View>
 
         {/* More ways to use Uber */}
@@ -552,26 +548,26 @@ const styles = StyleSheet.create({
   restaurantCard: {
     flexDirection: "row",
     borderWidth: 1,
-    borderColor:"grey",
+    borderColor: "grey",
     borderRadius: 10,
     padding: 15,
     marginRight: 15,
     width: 280,
   },
   restaurantImage: {
-    width: 45,
-    height: 45,
-    borderRadius: 35,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
     backgroundColor: "#555",
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 15,
   },
+
   restaurantLogo: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 35,
+    width: 40,
+    height: 40,
   },
+
   restaurantInfo: {
     flex: 1,
   },
@@ -595,20 +591,19 @@ const styles = StyleSheet.create({
   tripCards: {
     flexDirection: "row",
     justifyContent: "space-between",
-    
   },
   tripCard: {
     width: 350,
     borderRadius: 15,
     padding: 10,
     height: 250,
-    overflow:"hidden",
+    overflow: "hidden",
   },
   tripIcon: {
     width: "100%",
     height: "80%",
     resizeMode: "cover",
-     borderRadius: 5,
+    borderRadius: 5,
   },
   tripTitle: {
     color: "#fff",
@@ -623,8 +618,6 @@ const styles = StyleSheet.create({
     opacity: 0.9,
     marginLeft: 5,
   },
-
-
 
   //Style for More Ways to Use Uber Section
   moreWaysGrid: {
