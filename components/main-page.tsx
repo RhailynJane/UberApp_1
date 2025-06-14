@@ -389,16 +389,26 @@ const MainPage = () => {
 
         {/* Score a GPC */}
         <View style={styles.section}>
-          <View style={[styles.promoCard, styles.burgerCard]}>
-            <View style={styles.promoContent}>
-              <Text style={styles.promoTitle}>Score a GPC®</Text>
-              <TouchableOpacity style={styles.orderButton} onPress={showAlert}>
-                <Text style={styles.orderButtonText}>Order now</Text>
-              </TouchableOpacity>
+          <View style={styles.burgerCardContainer}>
+            <View style={[styles.promoCard, styles.burgerCardGradient]}>
+              {/* Gradient effect using overlapping views */}
+              <View style={styles.gradientBase} />
+              <View style={styles.gradientOverlay} />
+
+              <View style={styles.promoContent}>
+                <Text style={styles.promoTitle}>Score a QPC®</Text>
+                <TouchableOpacity
+                  style={styles.orderButton}
+                  onPress={showAlert}
+                >
+                  <Text style={styles.orderButtonText}>Order now</Text>
+                </TouchableOpacity>
+              </View>
             </View>
+            {/* Burger image positioned outside the card */}
             <Image
               source={require("../assets/images/burger.png")}
-              style={styles.burgerImage}
+              style={styles.burgerImageOutside}
               resizeMode="contain"
             />
           </View>
@@ -755,41 +765,96 @@ const styles = StyleSheet.create({
   },
 
   //Style for Promo Card
+  //Style for Promo Card
+  burgerCardContainer: {
+    position: "relative",
+    width: "100%",
+    height: 120,
+    overflow: "visible",
+  },
+
   promoCard: {
     borderRadius: 15,
     padding: 20,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    overflow: "visible",
   },
-  burgerCard: {
-    backgroundColor: "#ffcc44",
+
+  burgerCardGradient: {
+    backgroundColor: "#F2E6B8", // Warm cream color
+    height: 100,
+    position: "relative",
   },
+
+  // Simple gradient effect without external packages
+  gradientBase: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "#F2E6B8", // Cream
+    borderRadius: 15,
+  },
+
+  gradientOverlay: {
+    position: "absolute",
+    top: 0,
+    left: "50%",
+    right: 0,
+    bottom: 0,
+    backgroundColor: "#E8D5A3", // Slightly darker cream
+    opacity: 0.6,
+    borderTopRightRadius: 15,
+    borderBottomRightRadius: 15,
+  },
+
   promoContent: {
     flex: 1,
+    zIndex: 10, // Ensure content appears above gradient layers
   },
+
   promoTitle: {
     color: "#000",
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: "bold",
     marginBottom: 15,
   },
+
   orderButton: {
-    backgroundColor: "#000",
+    backgroundColor: "#333",
     borderRadius: 25,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingHorizontal: 24,
+    paddingVertical: 12,
     alignSelf: "flex-start",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
+
   orderButtonText: {
     color: "#fff",
-    fontSize: 14,
-    fontWeight: "bold",
+    fontSize: 15,
+    fontWeight: "600",
   },
-  burgerImage: {
-    width: 60,
-    height: 60,
+
+  burgerImageOutside: {
+    position: "absolute",
+    width: 140,
+    height: 140,
+    right: -20,
+    top: -20,
+    zIndex: 2,
   },
+
+  //Style for Bottom Navigation
   bottomNav: {
     flexDirection: "row",
     backgroundColor: "#111",
