@@ -555,19 +555,19 @@ const styles = StyleSheet.create({
     width: 280,
   },
   restaurantImage: {
-    width: 45,
-    height: 45,
-    borderRadius: 35,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
     backgroundColor: "#555",
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 15,
   },
+
   restaurantLogo: {
-    width: "100%",
-    height: "100%",
-    borderRadius: 35,
+    width: 40,
+    height: 40,
   },
+
   restaurantInfo: {
     flex: 1,
   },
