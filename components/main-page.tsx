@@ -139,29 +139,23 @@ const moreWays = [
     title: "Try Courier →",
     subtitle: "For the things you need done now",
     icon: require("../assets/images/package-icon.png"),
-    backgroundColor: "#4488ff",
   },
   {
     id: 2,
     title: "Go in luxury →",
     subtitle: "Elevated service, high-end",
-    backgroundColor: "#ff4488",
     icon: require("../assets/images/luxury-car.png"),
-    backgroundColor: "#ff4488",
   },
 ];
 
 // Bottom Navigation Array
 const bottomNavItems = [
-
-
   {
     id: 1,
     icon: require("../assets/images/home-icon.png"),
     text: "Home",
   },
   {
-
     id: 2,
     icon: require("../assets/images/services-icon.png"),
     text: "Services",
@@ -316,19 +310,15 @@ const MainPage = () => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Plan your next trip</Text>
 
-          <ScrollView horizontal
+          <ScrollView
+            horizontal
             showsHorizontalScrollIndicator={false}
-            style={styles.horizontalScroll}>
+            style={styles.horizontalScroll}
+          >
             <View style={styles.tripCards}>
               {tripCards.map((card) => (
-                <View
-                  key={card.id}
-                  style={styles.tripCard}
-                >
-                  <Image
-                    source={card.icon}
-                    style={styles.tripIcon}
-                  />
+                <View key={card.id} style={styles.tripCard}>
+                  <Image source={card.icon} style={styles.tripIcon} />
                   <Text style={styles.tripTitle}>{card.title}</Text>
                   <Text style={styles.tripSubtitle}>{card.subtitle}</Text>
                 </View>
@@ -346,12 +336,23 @@ const MainPage = () => {
             style={styles.horizontalScroll}
           >
             {promocard.map((promo) => (
-              <View key={promo.id} style={[styles.promoScrollCard, { backgroundColor: promo.backgroundColor }]}>
+              <View
+                key={promo.id}
+                style={[
+                  styles.promoScrollCard,
+                  { backgroundColor: promo.backgroundColor },
+                ]}
+              >
                 <View style={styles.cardContent}>
                   <View style={{ flex: 1 }}>
                     <Text style={styles.title}>{promo.title}</Text>
-                    <TouchableOpacity style={styles.promoButton} onPress={showAlert}>
-                      <Text style={styles.promoButtonText}>{promo.subtitle}</Text>
+                    <TouchableOpacity
+                      style={styles.promoButton}
+                      onPress={showAlert}
+                    >
+                      <Text style={styles.promoButtonText}>
+                        {promo.subtitle}
+                      </Text>
                     </TouchableOpacity>
                   </View>
 
@@ -365,26 +366,25 @@ const MainPage = () => {
         {/* More ways to use Uber */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>More ways to use Uber</Text>
-
-          <View style={styles.moreWaysGrid}>
-            {moreWays.map((way) => (
-              <View
-                key={way.id}
-                style={[
-                  styles.moreWayCard,
-                  { backgroundColor: way.backgroundColor },
-                ]}
-              >
-                <Image
-                  source={way.icon}
-                  style={styles.moreWayIcon}
-                  resizeMode="contain"
-                />
-                <Text style={styles.moreWayTitle}>{way.title}</Text>
-                <Text style={styles.moreWaySubtitle}>{way.subtitle}</Text>
-              </View>
-            ))}
-          </View>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.horizontalScroll}
+          >
+            <View style={styles.moreWaysGrid}>
+              {moreWays.map((way) => (
+                <View key={way.id} style={[styles.moreWayCard]}>
+                  <Image
+                    source={way.icon}
+                    style={styles.moreWayIcon}
+                    resizeMode="cover"
+                  />
+                  <Text style={styles.moreWayTitle}>{way.title}</Text>
+                  <Text style={styles.moreWaySubtitle}>{way.subtitle}</Text>
+                </View>
+              ))}
+            </View>
+          </ScrollView>
         </View>
 
         {/* Score a GPC */}
@@ -622,8 +622,8 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   restaurantLogo: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
     borderRadius: 35,
   },
   restaurantInfo: {
@@ -649,7 +649,6 @@ const styles = StyleSheet.create({
   tripCards: {
     flexDirection: "row",
     justifyContent: "space-between",
-
   },
   tripCard: {
     width: 350,
@@ -690,14 +689,14 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   cardContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   title: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 24,
-    color: '#fff'
+    color: "#fff",
   },
   image: {
     width: 130,
@@ -707,7 +706,7 @@ const styles = StyleSheet.create({
     bottom: -40,
     right: -40,
     borderWidth: 2,
-    resizeMode: "cover"
+    resizeMode: "cover",
   },
 
   promoButton: {
@@ -723,8 +722,6 @@ const styles = StyleSheet.create({
     fontWeight: "semibold",
   },
 
-
-
   //Style for More Ways to Use Uber Section
   moreWaysGrid: {
     flexDirection: "row",
@@ -736,7 +733,6 @@ const styles = StyleSheet.create({
     padding: 10,
     height: 250,
     overflow: "hidden",
-    marginRight: 16,
   },
   moreWayIcon: {
     width: "100%",
