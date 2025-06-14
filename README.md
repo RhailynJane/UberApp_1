@@ -4,9 +4,9 @@ This is a React Native Uber clone app built with [Expo](https://expo.dev), featu
 
 ## Members
 
--Rhailyn Jane Cona
--Komalpreet Kaur
--Abel Fekadu
+- Rhailyn Jane Cona
+- Komalpreet Kaur
+- Abel Fekadu
 
 ## Features
 
