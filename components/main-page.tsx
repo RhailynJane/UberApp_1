@@ -140,12 +140,7 @@ const moreWays = [
     subtitle: "For the things you need done now",
     icon: require("../assets/images/package-icon.png"),
     backgroundColor: "#4488ff",
-    iconStyle: {
-      width: 220,
-      height: 200,
-    },
-    fullWidth: true,
-    textOutside: true,
+
   },
   {
     title: "Go in luxury →",
@@ -153,10 +148,7 @@ const moreWays = [
     backgroundColor: "#ff4488",
     icon: require("../assets/images/luxury-car.png"),
 
-    iconStyle: {
-      width: 200,
-      height: 200
-    }
+
   }
 
 ];
@@ -329,73 +321,74 @@ const MainPage = () => {
           <ScrollView horizontal
             showsHorizontalScrollIndicator={false}
             style={styles.horizontalScroll}>
-          <View style={styles.tripCards}>
-            {tripCards.map((card) => (
-              <View
-                key={card.id}
-                style={styles.tripCard}
-              >
-                <Image
-                  source={card.icon}
-                  style={styles.tripIcon} 
-                /> 
-                <Text style={styles.tripTitle}>{card.title}</Text>
-                <Text style={styles.tripSubtitle}>{card.subtitle}</Text>
-              </View>
-            ))}
-          </View>
-        </ScrollView>
+            <View style={styles.tripCards}>
+              {tripCards.map((card) => (
+                <View
+                  key={card.id}
+                  style={styles.tripCard}
+                >
+                  <Image
+                    source={card.icon}
+                    style={styles.tripIcon}
+                  />
+                  <Text style={styles.tripTitle}>{card.title}</Text>
+                  <Text style={styles.tripSubtitle}>{card.subtitle}</Text>
+                </View>
+              ))}
+            </View>
+          </ScrollView>
         </View>
 
         {/* Promo Sections */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Promotions</Text>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.horizontalScroll}
-        >
-        {promocard.map((promo) => (
-          <View key={promo.id} style={[styles.promoScrollCard,{backgroundColor: promo.backgroundColor}]}>
-            <View style={styles.cardContent}>
-              <View style={{ flex: 1 }}>
-                <Text style={styles.title}>{promo.title}</Text>
-                <TouchableOpacity style={styles.promoButton} onPress={showAlert}>
-                  <Text style={styles.promoButtonText}>{promo.subtitle}</Text>
-                </TouchableOpacity>
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Promotions</Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.horizontalScroll}
+          >
+            {promocard.map((promo) => (
+              <View key={promo.id} style={[styles.promoScrollCard, { backgroundColor: promo.backgroundColor }]}>
+                <View style={styles.cardContent}>
+                  <View style={{ flex: 1 }}>
+                    <Text style={styles.title}>{promo.title}</Text>
+                    <TouchableOpacity style={styles.promoButton} onPress={showAlert}>
+                      <Text style={styles.promoButtonText}>{promo.subtitle}</Text>
+                    </TouchableOpacity>
+                  </View>
+
+                  <Image source={promo.icon} style={styles.image} />
+                </View>
               </View>
-          
-              <Image source={promo.icon} style={styles.image} />
-            </View>
-          </View>
-          ))}
-        </ScrollView>
-      </View>
+            ))}
+          </ScrollView>
+        </View>
 
         {/* More ways to use Uber */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>More ways to use Uber</Text>
+          <ScrollView horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.horizontalScroll}><View style={styles.moreWaysGrid}>
+              {moreWays.map((way) => (
+                <View
+                  key={way.id || way.title}
+                  style={[
+                    styles.moreWayCard,
+                  ]}
+                >
+                  <Image
+                    source={way.icon}
+                    // --- THIS IS THE CORRECTED LINE ---
+                    style={[styles.moreWayIcon, way]}
+                    resizeMode="cover"
+                  />
+                  <Text style={styles.moreWayTitle}>{way.title}</Text>
+                  <Text style={styles.moreWaySubtitle}>{way.subtitle}</Text>
+                </View>
+              ))}
+            </View></ScrollView>
 
-          <View style={styles.moreWaysGrid}>
-            {moreWays.map((way) => (
-              <View
-                key={way.id || way.title}
-                style={[
-                  styles.moreWayCard,
-                  { backgroundColor: way.backgroundColor },
-                ]}
-              >
-                <Image
-                  source={way.icon}
-                  // --- THIS IS THE CORRECTED LINE ---
-                  style={[styles.moreWayIcon, way.iconStyle]}
-                  resizeMode="contain"
-                />
-                <Text style={styles.moreWayTitle}>{way.title}</Text>
-                <Text style={styles.moreWaySubtitle}>{way.subtitle}</Text>
-              </View>
-            ))}
-          </View>
         </View>
 
         {/* Score a GPC */}
@@ -617,7 +610,7 @@ const styles = StyleSheet.create({
   restaurantCard: {
     flexDirection: "row",
     borderWidth: 1,
-    borderColor:"grey",
+    borderColor: "grey",
     borderRadius: 10,
     padding: 15,
     marginRight: 15,
@@ -660,20 +653,20 @@ const styles = StyleSheet.create({
   tripCards: {
     flexDirection: "row",
     justifyContent: "space-between",
-    
+
   },
   tripCard: {
     width: 350,
     borderRadius: 20,
     padding: 10,
     height: 250,
-    overflow:"hidden",
+    overflow: "hidden",
   },
   tripIcon: {
     width: "100%",
     height: "80%",
     resizeMode: "cover",
-     borderRadius: 5,
+    borderRadius: 5,
   },
   tripTitle: {
     color: "#fff",
@@ -697,8 +690,8 @@ const styles = StyleSheet.create({
     width: 300,
     height: 110,
     elevation: 2,
-    overflow: "hidden", 
-  position: "relative",
+    overflow: "hidden",
+    position: "relative",
   },
   cardContent: {
     flexDirection: 'row',
@@ -708,18 +701,18 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 24,
-    color:'#fff'
+    color: '#fff'
   },
   image: {
-  width: 130,
-  height: 130,
-  borderRadius: 70, 
-  position:"absolute",
-  bottom: -40, 
-  right: -40,  
-  borderWidth: 2,
-  resizeMode: "cover"
-},
+    width: 130,
+    height: 130,
+    borderRadius: 70,
+    position: "absolute",
+    bottom: -40,
+    right: -40,
+    borderWidth: 2,
+    resizeMode: "cover"
+  },
 
   promoButton: {
     backgroundColor: "#000",
@@ -742,26 +735,31 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   moreWayCard: {
-    width: "48%",
+    width: 350,
     borderRadius: 15,
-    padding: 20,
-    minHeight: 120,
+    padding: 10,
+    height: 250,
+    overflow: "hidden",
+    marginRight: 16,
   },
   moreWayIcon: {
-    width: 40,
-    height: 40,
-    marginBottom: 10,
+    width: "100%",
+    height: "80%",
+    resizeMode: "cover",
+    borderRadius: 5,
   },
   moreWayTitle: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: "semibold",
     marginBottom: 5,
+    marginLeft: 5,
   },
   moreWaySubtitle: {
     color: "#fff",
     fontSize: 12,
     opacity: 0.9,
+    marginLeft: 5,
   },
 
   //Style for Promo Card
