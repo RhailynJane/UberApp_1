@@ -107,6 +107,30 @@ const tripCards = [
   },
 ];
 
+//Promos Section
+const promocard = [
+  {
+    title: "Get 50% off",
+    subtitle: "Order Uber Eats now",
+    icon: require("../assets/images/food-plate.png"),
+    backgroundColor: "#155c30",
+  },
+  {
+    id: 2,
+    title: "Get 20% off",
+    subtitle: "Ride with Uber",
+    icon: require("../assets/images/uber-car.jpeg"),
+    backgroundColor: "#d1bb15",
+  },
+  {
+    id: 3,
+    title: "Get 35% off",
+    subtitle: "Order Grocery",
+    icon: require("../assets/images/grocery.png"),
+    backgroundColor: "#d14321",
+  },
+];
+
 // More Ways To Use Uber
 const moreWays = [
   {
@@ -307,6 +331,31 @@ const MainPage = () => {
           </View>
         </ScrollView>
         </View>
+
+        {/* Promo Sections */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Promotions</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.horizontalScroll}
+        >
+        {promocard.map((promo) => (
+          <View key={promo.id} style={[styles.promoScrollCard,{backgroundColor: promo.backgroundColor}]}>
+            <View style={styles.cardContent}>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.title}>{promo.title}</Text>
+                <TouchableOpacity style={styles.promoButton} onPress={showAlert}>
+                  <Text style={styles.promoButtonText}>{promo.subtitle}</Text>
+                </TouchableOpacity>
+              </View>
+          
+              <Image source={promo.icon} style={styles.image} />
+            </View>
+          </View>
+          ))}
+        </ScrollView>
+      </View>
 
         {/* More ways to use Uber */}
         <View style={styles.section}>
@@ -599,7 +648,7 @@ const styles = StyleSheet.create({
   },
   tripCard: {
     width: 350,
-    borderRadius: 15,
+    borderRadius: 20,
     padding: 10,
     height: 250,
     overflow:"hidden",
@@ -622,6 +671,58 @@ const styles = StyleSheet.create({
     fontSize: 12,
     opacity: 0.9,
     marginLeft: 5,
+  },
+
+  // style for promo cards
+  promoScrollCard: {
+    borderRadius: 12,
+    padding: 16,
+    marginRight: 16,
+    width: 300,
+    height: 110,
+    elevation: 2,
+    overflow: "hidden", 
+  position: "relative",
+  },
+  cardContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 24,
+    color:'#fff'
+  },
+  image: {
+  width: 130,
+  height: 130,
+  borderRadius: 70, 
+  position:"absolute",
+  bottom: -40, 
+  right: -40,  
+  borderWidth: 2,
+  borderColor: "#fff",
+  backgroundColor: "#fff",
+  shadowColor: "#000",
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.3,
+  shadowRadius: 3,
+  elevation: 5,
+  resizeMode: "cover"
+},
+
+  promoButton: {
+    backgroundColor: "#000",
+    borderRadius: 25,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    alignSelf: "flex-start",
+  },
+  promoButtonText: {
+    color: "#fff",
+    fontSize: 12,
+    fontWeight: "semibold",
   },
 
 
