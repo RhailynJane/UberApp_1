@@ -50,17 +50,38 @@ const suggestions = [
 const restaurants = [
   {
     id: 1,
-    name: "Jollibee (9190 Macleod Trl)",
+    name: "Jollibee",
     time: "15 min",
     deliveryFee: "$0 Delivery Fee",
     logo: require("../assets/images/jollibee-logo.jpeg"),
   },
   {
     id: 2,
-    name: "Costco",
-    time: "65 min",
-    deliveryFee: "$3 Delivery Fee",
-    logo: require("../assets/images/costco-logo.jpeg"),
+    name: "Viet Thai Bistro",
+    time: "30 min",
+    deliveryFee: "$1.49 Delivery Fee",
+    logo: require("../assets/images/viet-thai-logo.jpeg"),
+  },
+  {
+    id: 3,
+    name: "McDonald's",
+    time: "25 min",
+    deliveryFee: "$0.99 Delivery Fee",
+    logo: require("../assets/images/mcdonalds-logo.png"),
+  },
+  {
+    id: 4,
+    name: "Popeyes Louis Kitchen",
+    time: "40 min",
+    deliveryFee: "$2.49 Delivery Fee",
+    logo: require("../assets/images/popeyes-logo.png"),
+  },
+  {
+    id: 5,
+    name: "Subway",
+    time: "20 min",
+    deliveryFee: "$1.29 Delivery Fee",
+    logo: require("../assets/images/subway-logo.jpeg"),
   },
 ];
 
@@ -71,14 +92,18 @@ const tripCards = [
     title: "Easy car rentals →",
     subtitle: "Take the wheel and get going",
     icon: require("../assets/images/car-keys.png"),
-    backgroundColor: "#ff4444",
   },
   {
     id: 2,
-    title: "Reserve and relax",
+    title: "Reserve and relax →",
     subtitle: "Book up to 90 days ahead",
     icon: require("../assets/images/plant-icon.png"),
-    backgroundColor: "#44aa44",
+  },
+  {
+    id: 3,
+    title: "For XL groups →",
+    subtitle: "Room for the whole crew",
+    icon: require("../assets/images/red-car.png"),
   },
 ];
 
@@ -243,7 +268,7 @@ const MainPage = () => {
                   <Image
                     source={restaurant.logo}
                     style={styles.restaurantLogo}
-                    resizeMode="contain"
+                    resizeMode="cover"
                   />
                 </View>
                 <View style={styles.restaurantInfo}>
@@ -262,25 +287,25 @@ const MainPage = () => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Plan your next trip</Text>
 
+          <ScrollView horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.horizontalScroll}>
           <View style={styles.tripCards}>
             {tripCards.map((card) => (
               <View
                 key={card.id}
-                style={[
-                  styles.tripCard,
-                  { backgroundColor: card.backgroundColor },
-                ]}
+                style={styles.tripCard}
               >
                 <Image
                   source={card.icon}
-                  style={styles.tripIcon}
-                  resizeMode="contain"
-                />
+                  style={styles.tripIcon} 
+                /> 
                 <Text style={styles.tripTitle}>{card.title}</Text>
                 <Text style={styles.tripSubtitle}>{card.subtitle}</Text>
               </View>
             ))}
           </View>
+        </ScrollView>
         </View>
 
         {/* More ways to use Uber */}
@@ -526,24 +551,26 @@ const styles = StyleSheet.create({
   //Style for Restaurants Section
   restaurantCard: {
     flexDirection: "row",
-    backgroundColor: "#333",
+    borderWidth: 1,
+    borderColor:"grey",
     borderRadius: 10,
     padding: 15,
     marginRight: 15,
     width: 280,
   },
   restaurantImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: 45,
+    height: 45,
+    borderRadius: 35,
     backgroundColor: "#555",
     justifyContent: "center",
     alignItems: "center",
     marginRight: 15,
   },
   restaurantLogo: {
-    width: 40,
-    height: 40,
+    width: '100%',
+    height: '100%',
+    borderRadius: 35,
   },
   restaurantInfo: {
     flex: 1,
@@ -551,7 +578,7 @@ const styles = StyleSheet.create({
   restaurantName: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: "semibold",
     marginBottom: 5,
   },
   restaurantTime: {
@@ -568,29 +595,36 @@ const styles = StyleSheet.create({
   tripCards: {
     flexDirection: "row",
     justifyContent: "space-between",
+    
   },
   tripCard: {
-    width: "48%",
+    width: 350,
     borderRadius: 15,
-    padding: 20,
-    minHeight: 120,
+    padding: 10,
+    height: 250,
+    overflow:"hidden",
   },
   tripIcon: {
-    width: 40,
-    height: 40,
-    marginBottom: 10,
+    width: "100%",
+    height: "80%",
+    resizeMode: "cover",
+     borderRadius: 5,
   },
   tripTitle: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: "semibold",
     marginBottom: 5,
+    marginLeft: 5,
   },
   tripSubtitle: {
     color: "#fff",
     fontSize: 12,
     opacity: 0.9,
+    marginLeft: 5,
   },
+
+
 
   //Style for More Ways to Use Uber Section
   moreWaysGrid: {
