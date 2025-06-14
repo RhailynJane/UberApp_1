@@ -110,6 +110,7 @@ const tripCards = [
 //Promos Section
 const promocard = [
   {
+    id: 1,
     title: "Get 50% off",
     subtitle: "Order Uber Eats now",
     icon: require("../assets/images/food-plate.png"),
@@ -702,13 +703,6 @@ const styles = StyleSheet.create({
   bottom: -40, 
   right: -40,  
   borderWidth: 2,
-  borderColor: "#fff",
-  backgroundColor: "#fff",
-  shadowColor: "#000",
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.3,
-  shadowRadius: 3,
-  elevation: 5,
   resizeMode: "cover"
 },
 
