@@ -1,4 +1,5 @@
-import MainPage from "@/components/main-page";
-export default function Index() {
+import MainPage from '../components/main-page';
+
+export default function HomeScreen() {
   return <MainPage />;
 }
